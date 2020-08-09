@@ -1,0 +1,156 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html
+{
+    height: 100%;
+}
+
+body
+{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 90vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:   1fr;
+    grid-template-areas:
+    "sec1 sec2 sec3";
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(95, 165, 206);
+    background-image:linear-gradient(rgb(47, 111, 153),rgb(170, 224, 255));
+}
+
+.sec1
+{
+    position: relative;
+    grid-area: sec1;
+    bottom: 25px;
+    text-align: center;
+}
+
+.sec2
+{
+    grid-area: sec2;
+    position: relative;
+    width: 500px;    
+    font-size: 17px;
+    color:rgb(52, 205, 216);
+    font-size: 19px;
+    position: relative;
+    align-items: center;
+    height: 500px;
+    bottom: 50px;
+    background-color: rgb(195, 231, 252);
+    border-radius: 10px ;
+    padding: 20px;
+    box-shadow: 
+    inset 0 -3em 3em rgba(0,0,0,0.1), 
+          0 0  0 2px rgb(255,255,255),
+          0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.yellowcar
+{
+    grid-area: sec3;
+    position: relative;
+    height: 200px;
+}
+
+#car
+{
+    position: relative;
+    height: 340px;
+}
+
+.button
+{
+    position: relative;
+    text-align:center;
+    right: 0px;
+    padding: 10px 30px 10px 20px;
+    margin: 0px;
+    font-size: 21px;
+    background-image: linear-gradient( rgb(147, 211, 231),rgb(30, 132, 163));
+    color:rgb(0, 0, 0);
+    box-shadow: 0px 1px 1px 1px #181818;
+    cursor: pointer;
+    
+}
+
+#buttonn
+{
+    border-radius: 5px 5px 5px 100px;
+}
+
+#butonn
+{
+    border-radius: 5px 5px 100px 5px;
+}
+
+.button:hover
+{
+color: rgb(184, 244, 255);
+background-image: linear-gradient( rgba(147, 231, 220, 0.541),rgba(30, 132, 163, 0.657));
+}
+
+.logo
+{
+    position: relative;
+    width: 200px;
+    margin: 0px;
+    left:0px;
+    z-index: 1;
+    top: 15px;
+}
+
+h1
+{
+    margin: 40px;
+    text-align: center;
+    position: relative;
+    top: 20px;
+}
+
+b
+{
+    font-size: 20px;
+}
+
+p
+{
+    color:rgb(0, 0, 0);
+    
+}
+
+.white
+{
+    padding: 5px;
+}
+
+
+.links
+{
+    position: relative;
+    left: 170px;
+}
+
+span
+{
+    position: relative;
+    padding: 16px;
+    margin: 10px;
+}

@@ -1,0 +1,27 @@
+<div class="whitespace"></div>
+<div class="container">
+<h2>    פירוט הזמנות קודמות
+</h2>
+<table class="table"> <!-- טבלת הזמנות קודמות של המשתמש -->
+  
+    <thead>
+      <tr>
+        <th scope="col">מס' הזמנה</th>
+        <th scope="col">תחילת השכרה</th>
+        <th scope="col">סיום השכרה</th>
+        <th scope="col">סיום השכרה בפועל</th>
+        <th scope="col">מספר לוחית רישוי</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let i of UserRentalHistory"> <!-- יוזר רנטל היסטורי הוא האובייקט שמוחזר מגט מת'וד, עליו מתבצעת איטרציה והצגת כל האובייקטים שבתוכו -->
+        <td>{{i.ID}}</td>
+        <td>{{i.RentalStartDate}}</td>
+        <td>{{i.ReturnCarDate}}</td>
+        <td>{{i.ReturnCarDateApproval}}</td>
+        <td>{{i.LicensePlateNumber}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

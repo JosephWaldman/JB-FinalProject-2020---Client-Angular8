@@ -1,0 +1,216 @@
+
+.Container
+{
+    margin: 0;
+    padding: 0;
+    height: 90vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-rows:  36% 45%;
+    grid-template-areas:
+    "sec1 sec2 sec2"
+    "sec3 sec2 sec2"    ;
+    justify-items: center;
+    align-items: center;
+    background-image:linear-gradient(rgb(47, 111, 153),rgb(170, 224, 255));
+}
+
+.Search
+{
+    top:32px;
+    height:65%;
+    grid-area: sec1;
+    color:rgb(52, 205, 216);
+    font-size: 19px;
+    position: relative;
+    align-items: center;
+    width: 270px;
+    background-color: rgb(52, 114, 150);
+    border-radius: 10px ;
+    padding: 20px;
+    box-shadow: 
+    inset 0 -3em 3em rgba(0,0,0,0.1), 
+          0 0  0 2px rgb(255,255,255),
+          0.3em 0.3em 1em rgba(0,0,0,0.3);
+
+}
+
+.whitespace
+{
+    padding: 2px;
+}
+
+#SearchValue
+{
+    padding: 4px;
+    width: 260px;
+    font-size: 16px;
+}
+
+.searchkey
+{
+    position: relative;
+    top:7%;
+}
+
+input
+{
+    padding: 3px;
+    width: 250px;
+    font-size: 16px;
+}
+
+.Cards
+{
+    grid-area: sec2;
+    overflow: auto;
+    position: relative;
+    height:100%;
+    width: 93.5%;
+    top:10%;
+    box-shadow: 
+    
+    inset 0 -3em 3em rgba(0,0,0,0.1), 
+          0 0  0 2px rgb(255,255,255),
+          0.3em 0.3em 1em rgba(0,0,0,0.3);
+    border-radius: 0 10px 10px 10px ;
+    background-image:linear-gradient(rgb(32, 82, 139),rgb(52, 205, 216));
+}
+
+.Cards::-webkit-scrollbar
+{
+    display: none;
+}
+
+.CardContainer
+{
+    display: inline;
+}
+
+ul
+{
+    text-align: center;
+    position: relative;
+}
+
+li
+{
+    text-decoration: none;
+    font-weight:400;
+    font-size: 16px;
+    background-image: linear-gradient(rgb(166, 221, 228),rgb(208, 219, 231));
+    display: inline-block;
+    padding: 10px;
+    margin:5px;
+    width: 170px;
+    border: white solid 1px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+li:hover
+{
+    background-image: linear-gradient( rgb(0, 146, 172),rgb(233, 243, 255));
+    color:white;
+    text-shadow: 0 0 3px rgb(0, 0, 0), 0 0 5px rgb(0, 0, 0);
+    box-shadow: 0px 2px 2px 2px #181818;
+}
+
+img
+{
+    position: relative;
+    border: black solid 1px;
+    height: 6rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: black;
+    border-style: dotted;
+}
+
+#carpicture:hover
+{
+    background-color: #6DB3F2;
+}
+
+.ManufacturerName
+{
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Heebo-Bold';
+}
+
+.model
+{
+    position: relative;
+    top:-10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.price
+{
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Heebo-Bold';
+}
+
+.pprice
+{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px 20px;
+}
+
+li:hover .pprice
+{
+    background-color: rgb(0, 0, 0);
+}
+
+#mouse
+{
+    position: sticky;
+    border: none;
+    bottom: 70%;
+    height: 70px;
+    right: 415px;
+}
+
+.localstorageObjects
+{
+    background-color: rgb(52, 114, 150);
+    grid-area: sec3;
+    color:rgb(52, 205, 216);
+    font-size: 20px;
+    position: relative;
+    align-items: center;
+    width: 272px;
+    height: 83%;
+    top:60px;
+    left:0px;
+    border-radius: 15px 15px 0px 15px;
+    overflow: auto;
+    scrollbar-width: none;
+    padding: 20px;
+    box-shadow: 
+    inset 0 -3em 3em rgba(0,0,0,0.1), 
+    0 0  0 2px rgb(255,255,255),
+    0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.localstorageObjects::-webkit-scrollbar
+{
+    display: none;
+}
+
+.LocalStorage
+{
+background-image:linear-gradient(rgb(47, 111, 153),rgb(94, 184, 211));
+color: black;
+position: relative;
+left: 0;
+}
+
+.title1
+{color: rgb(238, 230, 221);
+}

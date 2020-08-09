@@ -1,0 +1,63 @@
+<div class="main">
+  <div class="sec1">
+    <div class="text">
+      שלום, נא הכנס מספר רכב לסיום השכרה :<br />
+      <input type="text" #LicensePlateNumber placeholder="מספר רכב">
+      <input type="button" value="לאישור" (click)="CloseRental(LicensePlateNumber.value)"></div>
+    <!-- פונקציה לסגירת העסקה, נשלח אמצעי זיהוי ייחדוי - מספר לוחית רישוי -->
+    <br /><br />
+    <div class="result" *ngIf="RentalDates">
+      <!-- הצגת תאריכי ההשכרה ותאריכי השכרה בפועל, הכולל חישוב עליות ימי איחור -->
+      תאריך התחלת השכרה: {{RentalDates.RentalStartDate}} <br />
+      תאריך סיום השכרה: {{RentalDates.ReturnCarDate}}<br />
+      תאריך סיום בפועל: {{RentalDates.ReturnCarDateApproval}}
+      <br />
+      <input type="button" class="ShowDetails" value="הצג חיובים" (click)="CarRentalDatesAndCosts()">
+      <!-- הצגת חיובי ההשכרה, הסבר על הפונקציה בקובץ טי אס -->
+      <br />
+      <div *ngIf="TotalCost">
+        <div *ngIf="CarCosts">
+          מחירון<br />
+          עלות השכרה יומית: {{CarCosts.DailyCost}} ₪<br />
+          עלות יום איחור: {{CarCosts.DailyMonetaryFine}} ₪
+        </div><br />
+        פירוט חיובים :<br />
+        <div *ngIf="TotalRentalDaysCost">
+          עבור ימי השכרה : {{TotalRentalDaysCost}} ₪
+        </div>
+        <div *ngIf="TotalRentalDaysCostException">
+          עבור ימי איחור : {{TotalRentalDaysCostException}} ₪
+        </div>
+        עלות עסקה - סה"כ : {{TotalCost}}
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- פירוט הזמנות החברה -->
+    <h2> פירוט כל הזמנות החברה
+    </h2>
+    <table class="table" class="table">
+      <!-- טבלת ההשכרות  -->
+      <thead>
+        <tr>
+          <th>מס' הזמנה</th>
+          <th>תחילת השכרה</th>
+          <th>סיום השכרה</th>
+          <th>סיום השכרה בפועל</th>
+          <th>מספר לוחית רישוי</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of AllRentalsHistory">
+          <!-- שימוש באנג'י פור עבור פירוט כלל ההשכרות -->
+          <td>{{i.ID}}</td>
+          <td>{{i.RentalStartDate}}</td>
+          <td>{{i.ReturnCarDate}}</td>
+          <td>{{i.ReturnCarDateApproval}}</td>
+          <td>{{i.LicensePlateNumber}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

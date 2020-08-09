@@ -1,0 +1,134 @@
+<div class="container">
+    <div class="table1">
+        <!-- טבלה -->
+        <h1> פירוט רכבי החברה
+        </h1>
+        <h5>*לחץ על הטבלה בכדי לערוך או למחוק</h5>
+        <div class="tableone">
+            <table class="table" class="table">
+                <thead>
+                    <tr>
+                        <th>מספר סוג הרכב</th>
+                        <th>לוחית רישוי</th>
+                        <th>קילומטראג'</th>
+                        <th>תמונה</th>
+                        <th>עבר תיקון?</th>
+                        <th>האם פנוי?</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let i of TableData">
+                        <!-- הצגת כלל האובייקטים בעזרת איטרציה בשיטת אנ ג'י פור -->
+                        <!-- אנ ג'י איפ עבור השוואת השורה שנלחצה והפיכת העריכה לזמינה, המשך פירוט בקובץ טי אס -->
+
+                        <td *ngIf="i.LicensePlateNumber==EditRowID"><input type="text" 
+                                [(ngModel)]="i.CarTypeID"></td>
+                        <td *ngIf="i.LicensePlateNumber!= EditRowID" (click)="Edit(i.LicensePlateNumber)">
+                            {{i.CarTypeID}}</td>
+
+                            <td *ngIf="i.LicensePlateNumber==EditRowID"><input type="text"
+                                [(ngModel)]="i.LicensePlateNumber"></td>
+                        <td *ngIf="i.LicensePlateNumber!= EditRowID" (click)="Edit(i.LicensePlateNumber)">
+                            {{i.LicensePlateNumber}}</td>
+
+                        <td *ngIf="i.LicensePlateNumber==EditRowID"><input type="text"
+                                [(ngModel)]="i.CurrentKilometrage"></td>
+                        <td *ngIf="i.LicensePlateNumber!= EditRowID" (click)="Edit(i.LicensePlateNumber)">
+                            {{i.CurrentKilometrage}}</td>
+
+                        <td *ngIf="i.LicensePlateNumber==EditRowID" style="border: 2px solid black;">
+                            <input type="file" ng2FileSelect [uploader]="uploader">
+                            <button (click)="uploader.uploadAll()">העלה תמונה </button>
+                            <input type="text" 
+                                [(ngModel)]="i.Picture"></td>
+                            <td *ngIf="i.LicensePlateNumber!= EditRowID" (click)="Edit(i.LicensePlateNumber)">
+                                {{i.Picture? "כן":"לא"}}</td>
+    
+                        <td *ngIf="i.LicensePlateNumber==EditRowID"><input type="text" 
+                                [(ngModel)]="i.IsRepaired" placeholder="כן/לא"><br/>בעדכון להקליד כן או לא</td>
+                        <td *ngIf="i.LicensePlateNumber!= EditRowID" (click)="Edit(i.LicensePlateNumber)">
+                            {{i.IsRepaired? "כן":"לא"}}</td>
+
+                        <td *ngIf="i.LicensePlateNumber==EditRowID"><input type="text" 
+                                [(ngModel)]="i.IsAvailable" placeholder="כן/לא"><br/>בעדכון להקליד כן או לא</td>
+                         <td *ngIf="i.LicensePlateNumber!= EditRowID" (click)="Edit(i.LicensePlateNumber)">
+                             {{i.IsAvailable? "כן":"לא"}}</td>
+
+                        <td *ngIf="EditRowID" class="button" (click)="Update(i)">
+                            <!-- פונקציה לעדכון הרשומה -->
+                            <img src="assets/pictures/Checked.png" class="pic" />לעדכון</td>
+                            
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <!-- פונקציה למחיקת הרשומה -->
+                        <td *ngIf="EditRowID" class="button" (click)="Delete(i)">למחיקה
+                            <img src="assets/pictures/Unchecked.png" class="pic" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="table2">
+        <!-- טופס להוספת רשומה -->
+        <div class=header>
+            <h2> הוספת רכב חדש
+            </h2>
+        </div>
+        <table id="second">
+
+            <tr>
+                <th>לוחית רישוי</th>
+                <td><input type="text" #LicensePlateNumber></td>
+            </tr>
+
+            <tr>
+                <th>מספר סוג הרכב</th>
+                <td><input type="text" #CarTypeID></td>
+            </tr>
+
+            <tr>
+                <th>קילומטראג'</th>
+                <td><input type="text" #CurrentKilometrage></td>
+            </tr>
+
+            <tr>
+                <th>תמונה</th>
+                <div class="picturre">
+                    <input type="file" ng2FileSelect [uploader]="uploader" #Picture>
+                    <button (click)="uploader.uploadAll()">העלה תמונה </button>
+                    </div>
+            </tr>
+
+            <tr>
+            </tr>
+            <tr>
+                <th>עבר תיקון?</th>
+                <td>
+                    <select [(ngModel)]="IsRepaired">
+                        <option value="true">כן</option>
+                        <option value="false">לא</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <th>עבר תיקון?</th>
+                <td>
+                    <select [(ngModel)]="IsAvailable">
+                        <option value="true">כן</option>
+                        <option value="false">לא</option>
+                    </select>
+                </td>
+            </tr>
+            <!-- פונקציה המקבלת את כל פרטי השדות מהמשתמש ושולחת אותם לשרת להוספה, המשך פירוט בקובץ טי אס -->
+            <input id="add" type="button" value="הוסף" (click)="Add(
+                LicensePlateNumber.value,
+                CarTypeID.value,
+                CurrentKilometrage.value,
+                Picture.value
+                )">
+        </table>
+    </div>
+</div>

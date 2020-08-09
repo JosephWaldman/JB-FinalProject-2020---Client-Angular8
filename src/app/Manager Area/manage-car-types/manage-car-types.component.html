@@ -1,0 +1,112 @@
+<div class="container">
+    <div class="table1">  <!-- טבלה -->
+        <h1> פירוט סוגי הרכבים
+        </h1>
+        <h5>*לחץ על הטבלה בכדי לערוך או למחוק</h5>
+        <div class="tableone">
+            <table class="table" class="table">
+                <thead>
+                    <tr>
+                        <th>מספר זיהוי</th>
+                        <th>יצרן</th>
+                        <th>דגם</th>
+                        <th>עלות יומית</th>
+                        <th>עלות יום איחור</th>
+                        <th>שנת יצור</th>
+                        <th>גיר</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of TableData"> <!-- הצגת כלל האובייקטים בעזרת איטרציה בשיטת אנ ג'י פור -->
+
+                        <td>{{i.CarTypeID}}</td>
+                        <!-- אנ ג'י איפ עבור השוואת השורה שנלחצה והפיכת העריכה לזמינה, המשך פירוט בקובץ טי אס -->
+                        <td *ngIf="i.CarTypeID==EditRowID"><input type="text" [(ngModel)]="i.ManufacturerName"></td> 
+                        <td *ngIf="i.CarTypeID!= EditRowID" (click)="Edit(i.CarTypeID)">
+                            {{i.ManufacturerName}}</td>
+                        <td *ngIf="i.CarTypeID==EditRowID"><input type="text" [(ngModel)]="i.Model"></td>
+                        <td *ngIf="i.CarTypeID!= EditRowID" (click)="Edit(i.CarTypeID)">
+                            {{i.Model}}</td>
+                        <td *ngIf="i.CarTypeID==EditRowID"><input type="text" [(ngModel)]="i.DailyCost"></td>
+                        <td *ngIf="i.CarTypeID!= EditRowID" (click)="Edit(i.CarTypeID)">
+                            {{i.DailyCost}} ₪</td>
+                        <td *ngIf="i.CarTypeID==EditRowID"><input type="text" [(ngModel)]="i.DailyMonetaryFine"></td>
+                        <td *ngIf="i.CarTypeID!= EditRowID" (click)="Edit(i.CarTypeID)">
+                            {{i.DailyMonetaryFine}} ₪</td>
+                        <td *ngIf="i.CarTypeID==EditRowID"><input type="text" [(ngModel)]="i.ManufactureYear"></td>
+                        <td *ngIf="i.CarTypeID!= EditRowID" (click)="Edit(i.CarTypeID)">
+                            {{i.ManufactureYear}}</td>
+                        <td *ngIf="i.CarTypeID==EditRowID"><input type="text" [(ngModel)]="i.GearBox"></td>
+                        <td *ngIf="i.CarTypeID!= EditRowID" (click)="Edit(i.CarTypeID)">
+                            {{i.GearBox}}</td>
+
+                        <td *ngIf="EditRowID" class="button" (click)="Update(i)">  <!-- פונקציה לעדכון הרשומה -->
+                            <img src="assets/pictures/Checked.png" class="pic" />
+                            לעדכון</td>
+                        &nbsp;&nbsp;
+
+                        <td *ngIf="EditRowID" class="button" (click)="Delete(i)">למחיקה <!-- פונקציה למחיקת הרשומה -->
+                            <img src="assets/pictures/Unchecked.png" class="pic" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="table2"> <!-- טופס להוספת רשומה -->
+        <div class=header>
+            <h2> הוספת סוג רכב חדש
+            </h2>
+        </div>
+        <table id="second">
+            <tr>
+                <th>מס' סוג הרכב</th>
+                <td><input type="text" #CarTypeID></td>
+            </tr>
+
+            <tr>
+                <th>יצרן</th>
+                <td><input type="text" #ManufacturerName></td>
+            </tr>
+
+            <tr>
+                <th>דגם</th>
+                <td><input type="text" #Model></td>
+            </tr>
+
+            <tr>
+                <th>עלות יומית</th>
+                <td><input type="text" #DailyCost></td>
+            </tr>
+
+            <tr>
+                <th>עלות יום איחור</th>
+                <td><input type="text" #DailyMonetaryFine></td>
+            </tr>
+
+            <tr>
+                <th>שנת יצור</th>
+                <td><input type="text" #ManufactureYear></td>
+            </tr>
+
+            <tr>
+                <th>סוג גיר</th>
+                <td>
+                    <select [(ngModel)]="GearBox"> <!--  עבור סוג גיר -->
+                        <option value="אוטומטית">אוטומטי</option>
+                        <option value="ידנית">ידני</option>
+                    </select>
+                </td>
+            </tr>
+<!-- פונקציה המקבלת את כל פרטי השדות מהמשתמש ושולחת אותם לשרת להוספה, המשך פירוט בקובץ טי אס -->
+            <input id="add" type="button" value="הוסף" (click)="Add(  
+                CarTypeID.value,
+                ManufacturerName.value,
+                Model.value,
+                DailyCost.value,
+                DailyMonetaryFine.value,
+                ManufactureYear.value
+                )">
+        </table>
+    </div>
+</div>

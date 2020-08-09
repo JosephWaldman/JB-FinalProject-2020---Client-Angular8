@@ -1,0 +1,46 @@
+<div class="Container">
+    <div class="CardContainer" *ngIf="obj">
+        <div class="CardDetails">                    
+            <span class="ManufacturerName" #txt> <b>    <!--  הצגת פרטי האוייבקט הנבחר  -->
+           {{obj.ManufacturerName}} {{obj.Model}}
+            </b>
+            </span><br />
+            שנת יצור : {{obj.ManufactureYear}}<br />
+            תיבת הילוכים {{obj.GearBox}}<br />
+            {{"הרכב "}}
+            {{obj.IsRepaired? "לא עבר":"עבר"}}
+            {{" תיקון"}}<br />
+            {{"קילומטראג' : "+obj.CurrentKilometrage}}<br />
+            {{"להשכרה בסניף ה"+obj.Branch}}<br />
+            מספר לוחית רישוי : {{obj.LicensePlateNumber}}<br />
+          
+        </div>
+
+        <div class="picture">     <!--  תמונה  -->
+            <img src="{{obj.Picture}}">
+        </div>
+
+        <div class="date">          
+            <h3>בחירת תאריכי השכרה</h3>   <br />    <!--  בחירת תאריכים   -->
+            <div class="date1"> תאריך התחלה</div>
+            <input type="Date" [(ngModel)]="StartRentalDate"><br />
+            <div class="whitespace"></div>
+            <div class="date1"> תאריך סיום</div>
+            <input type="Date" [(ngModel)]="EndRentalDate"><br />
+            <input type="Button" class="button" value="המשך" (click)="DateCalc()">   <!--  שליחת נתוני התאריכים לפונקצית דייט קאלק  -->
+        </div>
+
+        <div class="OrderDetails" *ngIf="RentalDays">
+            <h3>עלות והשכרה</h3> <div class="whitespace"></div>             
+            <div class="whitespace"></div>
+            <!--  הצגת עלויות וימי השכרה  -->
+            נבחרו {{RentalDays}} ימי השכרה<br /> 
+            עלות יומית : {{obj.DailyCost}} ₪<br />
+            עלות עבור יום איחור : {{obj.DailyMonetaryFine}} ₪<br />
+            <u>
+            עלות ההשכרה הכוללת : {{obj.DailyCost*RentalDays}} ₪</u> <br />  <!--  חישוב עלות השכרה כוללת  -->
+            <input id="button" type="Button" value="אשר הזמנה" (click)="NewCarOrder()" [routerLink]="['/Home']">  <!--  נתונים נשלחים לפונקציה, יצירת הזמנה חדשה  -->
+            <div class="whitespace"></div>
+        </div>
+    </div>
+</div>

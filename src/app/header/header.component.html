@@ -1,0 +1,49 @@
+<div class="container">
+    <a [routerLink]="['/Home']">
+        דף הבית
+    </a> &nbsp; &nbsp;
+
+    <a *ngIf="!Service.UserDetails" 
+    [routerLink]="['/LoginForm']">  <!-- הצג רק לאורח -->
+        כניסה
+    </a> &nbsp;&nbsp;
+
+        <a *ngIf="!Service.UserDetails || 
+        Service.UserDetails.Rank==0 " 
+        [routerLink]="['/ContactUs']">  <!-- הצג רק לאורח או למשתמש רגיל -->
+            צור קשר
+        </a> &nbsp;&nbsp;
+
+    <a [routerLink]="['/CarSelect']"> 
+        בחירת רכב להשכרה
+    </a> &nbsp;&nbsp;
+
+    <a *ngIf="!Service.UserDetails"  
+    [routerLink]="['/SignUpForm']">  <!-- הצג רק לאורח -->
+        להרשמה
+    </a> &nbsp;&nbsp;
+
+    <span *ngIf="Service.UserDetails">
+        <a *ngIf="Service.UserDetails.Rank==0" 
+        [routerLink]="['/UserRentalsHistory']">  <!-- הצג רק למשתמש רגיל -->
+        פירוט הזמנות קודמות
+    </a>
+        &nbsp;&nbsp;
+
+        <a *ngIf="Service.UserDetails.Rank==1" 
+        [routerLink]="['/Employee']">  <!-- הצג רק לעובד -->
+        איזור עובד
+    </a> &nbsp;&nbsp;
+
+        <a *ngIf="Service.UserDetails.Rank==2" 
+        [routerLink]="['/Manager']">  <!-- הצג רק למנהל -->
+            איזור מנהל
+        </a> &nbsp;&nbsp;
+    </span>
+
+    <a *ngIf="Service.UserDetails" 
+    (click)="Signout()" 
+    [routerLink]="['/Home']">  <!-- הצג רק למשתמש רשום -->
+        יציאה
+    </a> 
+</div>

@@ -1,0 +1,116 @@
+.main
+{
+    height: 90vh;
+    width: 100w;
+    margin: 0px;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows:    1fr;
+    grid-template-areas:
+    "sec1 sec2 "
+    "sec1 sec2 ";
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(95, 165, 206);
+}
+
+.container
+{
+    grid-area: sec2;
+    position: relative;
+    background-color: rgb(52, 114, 150);
+    box-sizing: border-box;
+}
+
+
+table
+{
+    background-color: white;
+    box-shadow: 
+    inset 0 -3em 3em rgba(0,0,0,0.1), 
+          0 0  0 2px rgb(255,255,255),
+          0.3em 0.3em 1em rgba(0,0,0,0.3);    
+    padding: 10px;
+}
+
+td
+{    
+    padding: 5px;    
+    text-align: center;
+}
+
+th
+{
+    padding:10px;
+}
+
+h2
+{
+    color:rgb(52, 205, 216);
+    text-align: center;
+}
+
+tr:hover
+{
+    background-color: rgb(153, 178, 202);
+}
+
+.text
+{
+    color:rgb(52, 205, 216);
+    font-size: 20px;
+}
+
+.sec1
+{
+    grid-area: sec1;
+    width: 380px;
+}
+
+.text
+{   
+    color:rgb(52, 205, 216);
+    font-size: 19px;
+    position: relative;
+    align-items: center;
+    height:100%;
+    width: 330px;
+    right: 30px;
+    top: 20px;
+    background-color: rgb(52, 114, 150);
+    border-radius: 10px ;
+    padding: 20px;
+    box-shadow: 
+    inset 0 -3em 3em rgba(0,0,0,0.1), 
+          0 0  0 2px rgb(255,255,255),
+          0.3em 0.3em 1em rgba(0,0,0,0.3);
+          
+}
+
+input
+{
+    width: 300px;
+    height: 30px;
+    font-size: 16px;
+    margin: 10px;
+    text-align: center;
+}
+
+tbody
+{
+    height: 100px;
+}
+
+.result
+{
+    position: relative;
+    text-align:center;
+    right: 30px;
+    background-image: linear-gradient( rgb(0, 146, 172),rgb(54, 73, 95));
+    color:white;
+    text-shadow: 0 0 3px rgb(0, 0, 0), 0 0 5px rgb(0, 0, 0);
+    box-shadow: 0px 2px 2px 2px #181818;
+    font-size: 18px;
+}
+

@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="SignupForm">  <!-- טופס התחברות לאתר -->
+        
+        <div class="header">
+            <h2>כניסת משתמשים</h2>
+        </div>
+
+        <form 
+        [formGroup]="form" 
+        #UserForm="ngForm" 
+        (ngSubmit)="Login(Username.value,Password.value)">  <!-- שליחת שם משתמש וסיסמא לפונקצית לוג-אין -->
+
+            <div class="whitespace"></div>  <!-- ריווח -->
+
+            <div class="form-control">
+                <label>שם משתמש</label><br />  <!-- שדה לשם משתמש -->
+                <input 
+                required 
+                formControlName="username" 
+                type="text" 
+                name="Username" 
+                #Username>
+            </div>
+
+            <div class="whitespace"></div>
+
+            <div class="form-control">  <!-- שדה לסיסמא -->
+                <label>סיסמא</label><br />
+                <input 
+                required 
+                formControlName="password" 
+                type="password" 
+                name="Password" 
+                #Password>
+            </div>
+
+            <div class="whitespace"></div><!-- ריווח -->
+            <div class="whitespace"></div> <!-- ריווח -->
+            <div class="whitespace"></div><!-- ריווח -->
+
+            <button 
+            type="submit" 
+            [disabled]="UserForm.form.invalid"  
+            class="button">  <!-- רק במידה והוזנו נתונים בשדות הכפתור יהיה זמין ללחיצה -->
+                התחבר
+            </button>
+        </form>

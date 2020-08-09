@@ -1,0 +1,80 @@
+<div class="Container">
+    <div class="Search">
+        בחר בסוג חיפוש :<br/>
+        <select id="SearchValue" [(ngModel)]="SearchOption"> <!--  בחירת סוג החיפוש מתוך מספר אופציות  -->
+            <option value="ManufactureYear">שנה</option>
+            <option value="ManufacturerName">חברה</option>
+            <option value="Model">דגם</option>
+            <option value="GearBoxAuto">גיר אוטומטי</option>
+            <option value="GearBoxManual">גיר ידני</option>
+            <option value="FreeText">טקסט חופשי</option>
+            <option selected value="None">ללא בחירה</option>
+        </select><br />
+        
+<div class="whitespace"></div> <!--  ריווח שורות  -->
+
+        <div class="searchkey"  
+        *ngIf="SearchOption=='ManufactureYear' || SearchOption=='ManufacturerName'|| 
+                                 SearchOption=='Model' || SearchOption=='FreeText'"> <!--  במידה והתנאים מתקיימים, הצג את שורת הטקסט עבור החיפוש  -->
+            מילת חיפוש: <br/>
+            <input type="text" #option [(ngModel)]="SearchKey">
+            <br />
+        </div>
+    </div>
+
+    <div class="Cards"> <!-- הצגת הרכבים הפנויים בעזרת אנ ג'י פור, 
+        משתנה לפי סוג החיפוש ולפי מה שרושמים בעזרת פייפ, 
+        בקליק - יפעיל 2 פונקציות שמפורטות בקובץ טי אס  -->
+        <ul>
+            <li id="Card" 
+            *ngFor="let i of AvailableCars|SortBy:SearchKey:SearchOption" 
+            (click)="CarSelectionService(i);ToLocalStorage(i);" 
+            [routerLink]="['/CarOrder']"> <!--  בסיום הפעולה, מעבר לקומפוננט קאר אורדר  -->
+                <div class="CardContainer">
+                    <span class="ManufacturerName" #txt>
+                        {{i.ManufacturerName}}
+                    </span><br />
+                    <div class="model">
+                        {{i.Model}}
+                    </div>
+                    {{i.ManufactureYear}}<br />
+                    תיבת הילוכים {{i.GearBox}}<br />
+                    {{"הרכב "}}
+                    {{i.IsRepaired? "לא עבר":"עבר"}} 
+                    {{" תיקון"}}<br />
+                    {{"קילומטראג' : "+i.CurrentKilometrage}}<br />
+                    {{"להשכרה בסניף ה"+i.Branch}}<br />
+                    <br />
+                    <div class="pprice">
+                        <span class="price">{{i.DailyCost}} ₪</span>
+                        ליום השכרה
+                    </div>
+                    <br />
+                </div>
+                <div class="picture">
+                    <img id="carpicture" src="{{i.Picture}}"><br />
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <img src="assets/pictures/MouseScroll.gif" id="mouse">
+
+    <div *ngIf="bool" class="localstorageObjects"> מכוניות שהתעניינת בהם: <br /> <!--  מכונית בהם המשתמש התעניין, גם כאן ביצענו איטרציה בעזרת אנ ג'י פור  -->
+        <ul>
+            <li class="LocalStorage" *ngFor="let i of BackToCarObject" (click)="CarSelectionService(i)"
+                [routerLink]="['/CarOrder']">
+                <span class="title1">
+                {{i.ManufacturerName}} {{i.Model}} <br />
+                {{"קילומטראג' : "+i.CurrentKilometrage}}</span>
+                <div class="pprice">
+                    <span class="price">{{i.DailyCost}} ₪</span>
+                    ליום השכרה
+                </div>
+                <div class="picture">
+                    <img src="{{i.Picture}}"><br />
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+*
+{
+    position: sticky;
+    margin: 0px;
+    padding: 0px;
+}
+
+html
+{
+    height: 100%;
+}
+
+body
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+.container
+{
+    box-sizing: border-box;
+    width: 100vw;
+    height: 80vh;
+    margin: 0px;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: 1fr  32% ;
+    grid-template-rows:   1fr;
+    grid-template-areas:
+    "sec1 sec2 "
+    "sec1 sec2 ";
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(95, 165, 206);
+}
+
+.table
+{
+    grid-area: sec1;
+    background-color: rgb(215, 244, 255);
+    box-shadow: 
+    inset 0 -3em 3em rgba(0,0,0,0.1), 
+          0 0  0 0px rgb(0, 0, 0),
+          0.3em 0.3em 1em rgba(0,0,0,0.3);    
+          padding: 10px;
+          width: 100%;
+          border-color: black;
+          border-style: solid;
+}
+
+.table :hover
+{
+    border-color: rgb(255, 255, 255);
+
+}
+
+td, th
+{
+    box-sizing: border-box;
+    position: relative;
+    width: 10.5rem;
+    margin: 0px;
+    font-size: 16px;
+}
+
+.table2
+{    
+    grid-area: sec2;
+    position: relative;
+    width: 400px;
+    border-radius: 10px 10px 10px 10px ;
+    border-color: black;
+    border-style: solid;
+    background-color: rgb(215, 244, 255);
+}
+
+tbody input
+{
+    position: relative;
+    width: 130px;
+    font-size: 16px;
+    text-align: center;
+    background-color: rgb(195, 246, 255);
+    color: black;
+}
+
+h1
+{
+    position: relative;
+    text-align: center;
+    font-size: 28px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.pic
+{
+    position: relative;
+    height: 20px;
+}
+
+h6
+{
+    font-size: 16px;
+}
+
+#add
+{
+    position: relative;
+    right:95px;
+    font-size: 21px;
+    width: 180px;
+    margin: 10px;
+}
+
+.header
+{
+    background-color: rgb(160, 209, 226);
+}

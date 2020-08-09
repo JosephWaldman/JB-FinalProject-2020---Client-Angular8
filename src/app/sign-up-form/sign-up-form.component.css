@@ -1,0 +1,136 @@
+html
+{
+    height: 100%;
+}
+
+*
+{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.container
+{
+    border-radius: 5px;
+    margin: 0 auto;        
+    background-image:linear-gradient(rgb(47, 111, 153),rgb(170, 224, 255));
+    height: 100vh;
+}
+
+.SignupForm
+{
+    margin: 0 auto;   
+    width: 30%;
+    height: 100%;
+}
+
+.header
+{
+    background-color: rgb(160, 209, 226);
+    border-bottom: 1px solid #f0f0f0;
+    padding: 10px 40px;
+    text-align: center;    
+    width: 400px;
+}
+
+.sec
+{
+    position: relative;    
+
+    bottom: 364px;
+    right: 200px;
+}
+
+.secc
+{
+    position: relative;
+    left:250px;   
+
+}
+
+.form
+{
+    padding: 30px 40px; 
+}
+
+.form-control1
+{
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    position: relative;        
+
+
+}
+
+.form-control1 label 
+{
+    display: inline-block;
+    margin-bottom: 5px;    
+
+}
+
+.form-control1 input
+{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px;
+}
+
+button
+{
+    box-sizing: border-box;
+    position: relative;
+    width: 397px;
+    height: 50px;
+    top: 32px;
+    left: 33px;
+    text-align:center;
+    font-size: 20px;
+    color:rgb(0, 0, 0);
+    background-color: rgb(34, 106, 148);
+    color:rgb(52, 205, 216);
+    margin: 19px;
+}
+
+.error
+{
+    padding: 0px;
+    color: rgb(213, 247, 219);
+    margin: 0px;
+    font-size: 16px;
+}
+
+form
+{
+    background-color: rgba(52, 114, 150, 0.788);
+    padding: 15px;
+    width: 400px;
+    color:rgb(52, 205, 216);
+    font-size: 19px;
+}
+
+.gender
+{
+    width: 370px;
+    height: 43px;
+}
+
+option
+{
+    font-size: 17px;
+}

@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="table1">
+        <!-- טבלה -->
+        <h1> פירוט הזמנות החברה
+        </h1>
+        <h5>*לחץ על הטבלה בכדי לערוך או למחוק</h5>
+        <table class="table" class="table">
+            <thead>
+                <tr>
+                    <th>מס' הזמנה</th>
+                    <th>מס' זיהוי משתמש</th>
+                    <th>תחילת השכרה</th>
+                    <th>סיום השכרה</th>
+                    <th>סיום השכרה בפועל</th>
+                    <th>מספר לוחית רישוי</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of TableData">
+                    <!-- הצגת כלל האובייקטים בעזרת איטרציה בשיטת אנ ג'י פור -->
+                    <!-- אנ ג'י איפ עבור השוואת השורה שנלחצה והפיכת העריכה לזמינה, המשך פירוט בקובץ טי אס -->
+
+                    <td>{{i.ID}}</td>
+                    <td *ngIf="i.ID==EditRowID"><input type="text" required [(ngModel)]="i.UserID"></td>
+                    <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">{{i.UserID}}</td>
+                    <td *ngIf="i.ID==EditRowID"><input type="date" [(ngModel)]="i.RentalStartDate"></td>
+                    <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">{{i.RentalStartDate}}</td>
+                    <td *ngIf="i.ID==EditRowID"><input type="date" [(ngModel)]="i.ReturnCarDate"></td>
+                    <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">{{i.ReturnCarDate}}</td>
+                    <td *ngIf="i.ID==EditRowID"><input type="date" [(ngModel)]="i.ReturnCarDateApproval"></td>
+                    <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">
+                        {{i.ReturnCarDateApproval? i.ReturnCarDateApproval:"עוד לא הוחזר"}}</td>
+                    <td *ngIf="i.ID==EditRowID"><input type="text" [(ngModel)]="i.LicensePlateNumber"></td>
+                    <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">{{i.LicensePlateNumber}}</td>
+
+                    <td *ngIf="EditRowID" class="button" (click)="Update(i)"> <!-- פונקציה לעדכון הרשומה -->
+                        <img src="assets/pictures/Checked.png" class="pic" />
+                        לעדכון</td> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <!-- פונקציה למחיקת הרשומה -->
+                    <td *ngIf="EditRowID" class="button" (click)="Delete(i)">למחיקה
+                        <img src="assets/pictures/Unchecked.png" class="pic" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table2"><!-- טופס להוספת רשומה -->
+        <div class=header>
+            <h2> הוספת הזמנה חדשה
+            </h2>
+        </div>
+        <table>
+
+            <tr>
+                <th>מס' זיהוי משתמש</th>
+                <td><input type="text" #UserID></td>
+            </tr>
+
+            <tr>
+                <th>מספר לוחית רישוי של הרכב</th>
+                <td><input type="text" #LicensePlateNumber></td>
+            </tr>
+
+            <tr>
+                <th>תחילת השכרה</th>
+                <td><input type="date" #RentalStartDate></td>
+            </tr>
+
+            <tr>
+                <th>סיום השכרה</th>
+                <td><input type="date" #ReturnCarDate></td>
+            </tr>
+
+            <tr>
+                <th>סיום השכרה בפועל</th>
+                <td><input type="date" #ReturnCarDateApproval></td>
+            </tr>
+<!-- פונקציה המקבלת את כל פרטי השדות מהמשתמש ושולחת אותם לשרת להוספה, המשך פירוט בקובץ טי אס -->
+            <input id="add" type="button" value="הוסף" (click)="Add(
+                UserID.value,
+                LicensePlateNumber.value,
+                RentalStartDate.value,
+                ReturnCarDate.value,
+                ReturnCarDateApproval.value)">
+        </table>
+    </div>
+</div>

@@ -1,0 +1,163 @@
+<div class="container">
+    <div class="table1">
+        <!-- טבלה -->
+        <h1> פירוט משתמשים
+        </h1>
+        <h5>*לחץ על הטבלה בכדי לערוך או למחוק</h5>
+        <div class="tableone">
+            <table class="table" class="table">
+
+                <thead>
+                    <tr>
+                        <th>רשיון נהיגה</th>
+                        <th>שם משתמש</th>
+                        <th>סיסמא</th>
+                        <th>שם מלא</th>
+                        <th>ת.לידה</th>
+                        <th>מין</th>
+                        <th>אימייל</th>
+                        <th>תמונה</th>
+                        <th>סוג עובד</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let i of TableData">
+                        <!-- הצגת כלל האובייקטים בעזרת איטרציה בשיטת אנ ג'י פור -->
+                        <!-- אנ ג'י איפ עבור השוואת השורה שנלחצה והפיכת העריכה לזמינה, המשך פירוט בקובץ טי אס -->
+                        <td *ngIf="i.ID==EditRowID">
+                            <input type="text" [(ngModel)]="i.DriverLicense"></td>
+                        <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">
+                            {{i.DriverLicense}}</td>
+
+                        <td *ngIf="i.ID==EditRowID">
+                            <input type="text" [(ngModel)]="i.Username"></td>
+                        <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">
+                            {{i.Username}}</td>
+
+                        <td *ngIf="i.ID==EditRowID">
+                            <input type="text" [(ngModel)]="i.Password"></td>
+                        <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">
+                            {{i.Password}}</td>
+
+                        <td *ngIf="i.ID==EditRowID">
+                            <input type="text" [(ngModel)]="i.FullName"></td>
+                        <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">
+                            {{i.FullName}}</td>
+
+                        <td *ngIf="i.ID==EditRowID">
+                            <input type="date" [(ngModel)]="i.Birthdate"></td>
+                        <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">
+                            {{i.Birthdate}}</td>
+
+                        <td *ngIf="i.ID==EditRowID">
+                            <input type="text" [(ngModel)]="i.Gender"></td>
+                        <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">
+                            {{i.Gender}}</td>
+
+                        <td *ngIf="i.ID==EditRowID">
+                            <input type="text" [(ngModel)]="i.Email"></td>
+                        <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">
+                            {{i.Email}}</td>
+
+                        <td *ngIf="i.ID==EditRowID" style="border: 2px solid black;">
+                            <input type="file" ng2FileSelect [uploader]="uploader" #Thumbnail >
+                            <button (click)="uploader.uploadAll()">העלה תמונה </button>
+                            <input type="text" [(ngModel)]="i.Thumbnail">
+                        </td>                            
+                        <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">
+                            {{i.Thumbnail? "כן":"לא"}}</td>
+
+
+                        <td *ngIf="i.ID==EditRowID">
+                            <input type="text" [(ngModel)]="i.Rank"></td>
+                        <td *ngIf="i.ID!= EditRowID" (click)="Edit(i.ID)">
+                            {{i.Rank}}</td>
+
+                        <td *ngIf="EditRowID" class="button" (click)="Update(i)">
+                            <!-- פונקציה לעדכון הרשומה -->
+                            <img src="assets/pictures/Checked.png" class="pic" />
+                            לעדכון</td>
+                        &nbsp;
+
+                        <!-- פונקציה למחיקת הרשומה -->
+                        <td *ngIf="EditRowID" class="button" (click)="Delete(i)">למחיקה
+                            <img src="assets/pictures/Unchecked.png" class="pic" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="table2">
+        <!-- טופס להוספת רשומה -->
+        <div class=header>
+            <h2> הוספת משתמש חדש
+            </h2>
+        </div>
+        <table id="second">
+            <tr>
+                <th>רשיון נהיגה</th>
+                <td><input type="text" #DriverLicense></td>
+            </tr>
+
+            <tr>
+                <th>שם משתמש</th>
+                <td><input type="text" #Username></td>
+            </tr>
+
+            <tr>
+                <th>סיסמא</th>
+                <td><input type="text" #Password></td>
+            </tr>
+
+            <tr>
+                <th>שם מלא</th>
+                <td><input type="text" #FullName></td>
+            </tr>
+
+            <tr>
+                <th>ת.לידה</th>
+                <td><input type="date" #Birthdate></td>
+            </tr>
+
+            <tr>
+                <th>מין</th>
+                <td>
+                    <select [(ngModel)]="Gender">
+                        <option value="זכר">זכר</option>
+                        <option value="נקבה">נקבה</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <th>אימייל</th>
+                <td><input type="text" #Email></td>
+            </tr>
+
+            <tr>
+                <th>תמונה</th>
+                <input type="file" ng2FileSelect [uploader]="uploader" #Thumbnail>
+                <button (click)="uploader.uploadAll()">העלה תמונה </button>
+            </tr>
+
+            <tr>
+                <th>סוג עובד</th>
+                <td>
+                    <select [(ngModel)]="Rank">
+                        <option value="0">משתמש רגיל</option>
+                        <option value="1">עובד חברה</option>
+                        <option value="2">מנהל</option>
+                    </select>
+                </td>
+            </tr>
+            <!-- פונקציה המקבלת את כל פרטי השדות מהמשתמש ושולחת אותם לשרת להוספה, המשך פירוט בקובץ טי אס -->
+            <input id="add" type="button" value="הוסף" (click)="Add
+            (
+                DriverLicense.value, Username.value, Password.value,
+                FullName.value, Birthdate.value, Email.value, Thumbnail.value
+            )">
+        </table>
+    </div>
+</div>

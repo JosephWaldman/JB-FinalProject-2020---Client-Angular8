@@ -1,0 +1,126 @@
+<div class="container">
+    <div class="SignupForm">
+    <div class="header">
+        <h2>הרשמה למשתמש חדש</h2>
+    </div>
+
+    <form [formGroup]="form" #UserForm="ngForm" (ngSubmit)="NewUserSignUp()">  <!-- טופס בסגנון ריאקטיב פורמס, בלחיצה (ואישור ולידציה) תופעל פונקצית ניו יוזר סיגנאפ -->
+
+        <div class="form-control1">
+            <label>שם משתמש</label>
+                        <!--אטריביוט חדש הנקרא פורמ קונטרול ניים מייצג את שם הערך אליו מוזן נתון -->
+                        <input  
+            required 
+            formControlName="username" 
+            id="username" 
+            type="text" 
+            class="form-control" 
+            name="Username">
+            <div *ngIf="username.touched && username.invalid" class="error"> <!--  במידה והמשתמש לחץ או הקיש מידע שגוי יופיע השגיאות מתחת-->
+                <div *ngIf="username.errors.required">שם משתמש הינו שדה חובה</div> 
+                <div *ngIf="username.errors.minlength">יש להקליד 3 תווים לפחות</div>
+                <div *ngIf="username.errors.maxlength"> יש להקליד עד 20 תווים </div>
+                <span>השם משתמש שבחרת כבר תפוס!</span>  <!--  הודעה מולידציה אסינכרונית-->
+            </div>
+        </div>
+
+        <div class="form-control1">
+            <label>סיסמא</label>
+            <input 
+            required 
+            formControlName="password" 
+            id="password" 
+            type="password" 
+            class="form-control" 
+            name="Password">
+            <div *ngIf="password.touched && password.invalid" class="error"> <!--  במידה והמשתמש לחץ או הקיש מידע שגוי יופיע השגיאות מתחת-->
+                <div *ngIf="password.errors.required">סיסמא הינה שדה חובה</div>
+                <div *ngIf="password.errors.minlength">יש להקליד 5 תווים לפחות</div>
+                <div *ngIf="password.errors.maxlength"> יש להקליד עד 25 תווים </div>
+            </div>
+        </div>
+
+        <div class="form-control1">
+            <label>שם מלא</label>
+            <input 
+            required 
+            formControlName="fullname" 
+            id="fullname" 
+            type="text" 
+            class="form-control" 
+            name="Fullname">
+            <div *ngIf="fullname.touched && fullname.invalid" class="error"> <!--  במידה והמשתמש לחץ או הקיש מידע שגוי יופיע השגיאות מתחת-->
+                <div *ngIf="fullname.errors.required">שם מלא הינו שדה חובה</div>
+                <div *ngIf="fullname.errors.minlength">יש להקליד 5 תווים לפחות</div>
+                <div *ngIf="fullname.errors.maxlength"> יש להקליד עד 20 תווים </div>
+            </div>
+        </div>
+
+        <div class="form-control1">
+            <label>מספר רשיון נהיגה</label>
+            <input 
+            required 
+            formControlName="driverlicense" 
+            id="driverlicense" 
+            type="text" 
+            class="form-control" 
+            name="Driverlicense">
+            <div *ngIf="driverlicense.touched && driverlicense.invalid" class="error"> <!--  במידה והמשתמש לחץ או הקיש מידע שגוי יופיע השגיאות מתחת-->
+                <div *ngIf="driverlicense.errors.required">מספר רשיון נהיגה הינו שדה חובה</div>
+                <div *ngIf="driverlicense.errors.minlength">מספר רשיון נהיגה חייב להכיל 9 תווים בדיוק</div>
+                <div *ngIf="driverlicense.errors.maxlength"> מספר רשיון נהיגה חייב להכיל 9 תווים בדיוק </div>
+                <div *ngIf="driverlicense.errors.pattern"> השדה מקבל מספרים בלבד </div>
+            </div>
+        </div>
+        <div class="form-control1">
+            <label>מין</label> <br/>
+                <select
+                required 
+                formControlName="gender" 
+                id="gender" 
+                class="gender" 
+                name="Gender">
+                <option class="gender" hidden>בחר מין</option>
+                <option class="gender" value="זכר">זכר</option>
+                <option class="gender" value="נקבה">נקבה</option>
+            </select>
+            <div *ngIf="gender.touched && gender.invalid" class="error"> <!--  במידה והמשתמש לחץ או הקיש מידע שגוי יופיע השגיאות מתחת-->
+                <div *ngIf="gender.errors.required">נא בחר מין</div>
+            </div>
+        </div>
+
+        <div class="form-control1">
+            <label>אימייל</label>
+            <input 
+            required 
+            formControlName="email" 
+            id="email" 
+            type="text" 
+            class="form-control" 
+            name="Email">
+            <div *ngIf="email.touched && email.invalid" class="error"> <!--  במידה והמשתמש לחץ או הקיש מידע שגוי יופיע השגיאות מתחת-->
+                <div *ngIf="email.errors.required">אימייל הינו שדה חובה</div>
+            </div>
+        </div>
+
+        <div class="form-control1">
+            <label>תאריך לידה</label>
+            <input 
+            id="birthdate" 
+            type="date" 
+            class="form-control" 
+            name="Birthdate"
+            formControlName="birthdate">
+        </div>
+       <!-- לחיצה על כפתור מסוג סבמיט, בתנאי שכלל התנאים עמדו בתקנים שלהם, יאשר את הפעולה -->
+            <button   
+            type="submit"   
+            [disabled]="UserForm.form.invalid"  
+            class="button">
+            לסיום הרשמה לחץ כאן
+           </button>
+        </form>    
+
+    </div>
+
+</div>

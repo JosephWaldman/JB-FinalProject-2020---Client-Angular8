@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */ 
+@font-face
+{
+    font-family: 'Heebo-Thin';
+    src:url(/assets/fonts/Heebo-Thin.ttf) format("truetype");
+}
+
+@font-face
+{
+    font-family: 'Heebo-Regular';
+    src:url(/assets/fonts/Heebo-Regular.ttf) format("truetype");
+}
+
+@font-face
+{
+    font-family: 'Heebo-Bold';
+    src:url(/assets/fonts/Heebo-Bold.ttf) format("truetype");
+}
+
+@font-face
+{
+    font-family: 'Heebo-ExtraBold';
+    src:url(/assets/fonts/Heebo-ExtraBold.ttf) format("truetype");
+}
+
+body
+{
+    font-family: 'Heebo-Regular';
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html
+{
+    height: 100vh;
+}
+
+body
+{
+    padding: 0px;
+    margin: 0px; 
+}
+
+app-root
+{
+    padding: 0;
+    margin: 0;
+    direction: rtl;
+    height: 100vh;
+    width: 100vw;    
+    box-sizing: border-box;
+}
+

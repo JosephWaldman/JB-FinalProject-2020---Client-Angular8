@@ -1,0 +1,43 @@
+*
+{
+    position: sticky;
+    margin: 0px;
+    padding: 0px;
+}
+
+html
+{
+    height: 100%;
+}
+
+body
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+.container
+{
+    background-color: rgb(95, 165, 206);
+    height: 90vh;
+}
+
+table
+{
+    background-color: white;    margin: 0 auto;        
+    box-shadow: 
+    inset 0 -3em 3em rgba(0,0,0,0.1), 
+          0 0  0 2px rgb(255,255,255),
+          0.3em 0.3em 1em rgba(0,0,0,0.3);    padding: 20px;
+}
+
+td
+{    
+    padding: 10px;
+}
+
+h2
+{
+    color:rgb(0, 0, 0);    text-align: center;  position: relative;   
+}
+
